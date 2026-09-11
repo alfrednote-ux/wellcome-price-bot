@@ -43,22 +43,17 @@ def fetch_current_price():
 
 
 def send_telegram_alert(message):
-    if not BOT_TOKEN or not CHAT_ID:
-        raise ValueError(
-            f"Missing Secrets! BOT_TOKEN={'SET' if BOT_TOKEN else 'EMPTY'}, "
-            f"CHAT_ID={'SET' if CHAT_ID else 'EMPTY'}"
-        )
-
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload = {
-        "chat_id": CHAT_ID,
-        "text": message,
-        "parse_mode": "Markdown",
-        "disable_web_page_preview": False,
-    }
-    response = requests.post(url, json=payload, timeout=10)
-    print(f"Telegram API Response: status={response.status_code}, body={response.text}")
-    response.raise_for_status()
+  url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+  payload = {
+      "chat_id": CHAT_ID,
+      "text": message,
+      "parse_mode": "Markdown",
+      "disable_web_page_preview": False,
+  }
+  res = requests.post(url, json=payload, timeout=10)
+  print(f"Telegram status code: {res.status_code}")
+  print(f"Telegram response: {res.text}")
+  res.raise_for_status()
 
 
 def main():
