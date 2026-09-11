@@ -43,9 +43,6 @@ def fetch_current_price():
 
 
 def send_telegram_alert(message):
-  print(f"BOT_TOKEN present: {bool(BOT_TOKEN)}")
-  print(f"CHAT_ID present: {bool(CHAT_ID)}")
-
   url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
   payload = {
       "chat_id": CHAT_ID,
@@ -54,7 +51,7 @@ def send_telegram_alert(message):
       "disable_web_page_preview": False,
   }
   res = requests.post(url, json=payload, timeout=10)
-  print(f"Telegram status code: {res.status_code}")
+  print(f"Telegram status: {res.status_code}")
   print(f"Telegram response: {res.text}")
   res.raise_for_status()
 
