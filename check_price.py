@@ -51,8 +51,8 @@ def send_telegram_alert(message):
       "disable_web_page_preview": False,
   }
   res = requests.post(url, json=payload, timeout=10)
-  print(f"Telegram status: {res.status_code}")
-  print(f"Telegram response: {res.text}")
+  print(f"TELEGRAM STATUS: {res.status_code}")
+  print(f"TELEGRAM RAW RESPONSE: {res.text}")
   res.raise_for_status()
 
 
