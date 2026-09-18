@@ -1,26 +1,31 @@
 import json
 import os
 import re
-import requests
 from bs4 import BeautifulSoup
+import requests
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
-# Add any number of items to track in this list
 ITEMS_TO_TRACK = [
     {
         "name": "原箱鈣思寶高鈣 植物固醇 24 X 250ML",
-        "url": "https://www.wellcome.com.hk/zh-hant/p/%E5%8E%9F%E7%AE%B1%E9%88%A3%E6%80%9D%E5%AF%B6%E9%AB%98%E9%88%A3%20%E6%A4%8D%E7%89%A9%E5%9B%BA%E9%86%87%2024%20X%20250ML/i/113465289.html",
+        "url": (
+            "https://www.wellcome.com.hk/zh-hant/p/%E5%8E%9F%E7%AE%B1%E9%88%A3%E6%80%9D%E5%AF%B6%E9%AB%98%E9%88%A3%20%E6%A4%8D%E7%89%A9%E5%9B%BA%E9%86%87%2024%20X%20250ML/i/113465289.html"
+        ),
     },
-        # {
-    #     "name": "原箱鈣思寶 高蛋白質豆奶 24 X 250 ML",
-    #     "url": "https://www.wellcome.com.hk/zh-hant/p/%E5%8E%9F%E7%AE%B1%E9%88%A3%E6%80%9D%E5%AF%B6%20%E9%AB%98%E8%9B%8B%E7%99%BD%E8%B3%AA%E8%B1%86%E5%A5%B6%2024%20X%20250%20ML/i/113719816.htmll"
-    # },
-      # {
-    #     "name": "越南 業務用 原隻熟白蝦 1KG ",
-    #     "url": "https://www.wellcome.com.hk/zh-hant/p/%E8%B6%8A%E5%8D%97%20%E6%A5%AD%E5%8B%99%E7%94%A8%20%E5%8E%9F%E9%9A%BB%E7%86%9F%E7%99%BD%E8%9D%A6%201KG%20(%E5%8C%85%E8%A3%9D%E5%8F%8A%E5%93%81%E7%89%8C%E9%9A%A8%E6%A9%9F%E7%99%BC%E6%94%BE)/i/113488734.html"
-    # },
+    {
+        "name": "原箱鈣思寶 高蛋白質豆奶 24 X 250 ML",
+        "url": (
+            "https://www.wellcome.com.hk/zh-hant/p/%E5%8E%9F%E7%AE%B1%E9%88%A3%E6%80%9D%E5%AF%B6%20%E9%AB%98%E8%9B%8B%E7%99%BD%E8%B3%AA%E8%B1%86%E5%A5%B6%2024%20X%20250%20ML/i/113719816.html"
+        ),
+    },
+    {
+        "name": "越南 業務用 原隻熟白蝦 1KG",
+        "url": (
+            "https://www.wellcome.com.hk/zh-hant/p/%E8%B6%8A%E5%8D%97%20%E6%A5%AD%E5%8B%99%E7%94%A8%20%E5%8E%9F%E9%9A%BB%E7%86%9F%E7%99%BD%E8%B9%A6%201KG%20(%E5%8C%85%E8%A3%9D%E5%8F%8A%E5%93%81%E7%89%8C%E9%9A%A8%E6%A9%9F%E7%99%BC%E6%94%BE)/i/113488734.html"
+        ),
+    },
 ]
 
 
